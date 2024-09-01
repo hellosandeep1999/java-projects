@@ -1,0 +1,51 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: dom4j-2.1.3.jar antlr-2.7.7.jar jooq-meta-extensions-3.15.3.
+ jar spring-aop-5.3.9.jar junit-jupiter-engine-5.7.2.jar jackson-datatyp
+ e-jsr310-2.12.4.jar springfox-oas-3.0.0.jar mockito-junit-jupiter-3.9.0
+ .jar junit-platform-commons-1.7.2.jar spring-tx-5.3.9.jar swagger-model
+ s-2.1.2.jar jooq-3.15.3.jar jooq-meta-extensions-hibernate-3.15.3.jar s
+ pring-plugin-core-2.0.0.RELEASE.jar springfox-spring-web-3.0.0.jar jaka
+ rta.xml.bind-api-2.3.3.jar mysql-connector-java-8.0.26.jar aspectjweave
+ r-1.9.7.jar junit-jupiter-params-5.7.2.jar jandex-2.2.3.Final.jar sprin
+ g-jcl-5.3.9.jar spring-data-jpa-2.5.4.jar jsonassert-1.5.0.jar snakeyam
+ l-1.28.jar byte-buddy-agent-1.10.22.jar spring-boot-starter-aop-2.5.4.j
+ ar javassist-3.27.0-GA.jar junit-jupiter-api-5.7.2.jar springfox-swagge
+ r-common-3.0.0.jar jakarta.activation-api-1.2.2.jar jackson-dataformat-
+ csv-2.12.4.jar jboss-transaction-api_1.2_spec-1.1.1.Final.jar javax.act
+ ivation-api-1.2.0.jar classgraph-4.8.83.jar jooq-meta-3.15.3.jar swagge
+ r-models-1.5.20.jar log4j-api-2.14.1.jar mockito-core-3.9.0.jar spring-
+ jdbc-5.3.9.jar spring-orm-5.3.9.jar hamcrest-2.2.jar mapstruct-1.3.1.Fi
+ nal.jar apiguardian-api-1.1.0.jar spring-boot-starter-jooq-2.7.1.jar sp
+ ringfox-boot-starter-3.0.0.jar jaxb-runtime-2.3.5.jar assertj-core-3.19
+ .0.jar spring-test-5.3.9.jar byte-buddy-1.10.22.jar flyway-core-6.4.3.j
+ ar springfox-swagger-ui-3.0.0.jar springfox-data-rest-3.0.0.jar hiberna
+ te-commons-annotations-5.1.2.Final.jar spring-data-commons-2.5.4.jar ja
+ ckson-databind-2.12.4.jar spring-boot-starter-test-2.5.4.jar hibernate-
+ core-5.4.32.Final.jar spring-boot-autoconfigure-2.5.4.jar spring-plugin
+ -metadata-2.0.0.RELEASE.jar tomcat-embed-core-9.0.52.jar spring-boot-te
+ st-autoconfigure-2.5.4.jar android-json-0.0.20131108.vaadin1.jar jakart
+ a.transaction-api-1.3.3.jar istack-commons-runtime-3.0.12.jar jaxb-api-
+ 2.3.1.jar spring-boot-starter-jdbc-2.5.4.jar objenesis-3.2.jar json-sma
+ rt-2.4.7.jar txw2-2.3.5.jar jackson-annotations-2.12.4.jar xmlunit-core
+ -2.8.2.jar r2dbc-spi-0.8.5.RELEASE.jar logback-classic-1.2.5.jar spring
+ fox-schema-3.0.0.jar classmate-1.5.1.jar HikariCP-4.0.3.jar spring-cont
+ ext-5.3.9.jar reactive-streams-1.0.3.jar opentest4j-1.2.0.jar spring-bo
+ ot-2.5.4.jar junit-jupiter-5.7.2.jar javax.persistence-api-2.2.jar spri
+ ngfox-core-3.0.0.jar spring-webmvc-5.3.9.jar spring-web-5.3.9.jar acces
+ sors-smart-2.4.7.jar springfox-spi-3.0.0.jar spring-boot-starter-2.5.4.
+ jar spring-core-5.3.9.jar jakarta.activation-1.2.2.jar jackson-core-2.1
+ 2.4.jar spring-aspects-5.3.9.jar spring-expression-5.3.9.jar spring-boo
+ t-starter-json-2.5.4.jar h2-1.4.200.jar swagger-annotations-2.1.2.jar j
+ son-path-2.5.0.jar swagger-annotations-1.5.20.jar tomcat-embed-websocke
+ t-9.0.52.jar spring-boot-test-2.5.4.jar springfox-swagger2-3.0.0.jar lo
+ gback-core-1.2.5.jar spring-boot-starter-tomcat-2.5.4.jar springfox-spr
+ ing-webmvc-3.0.0.jar springfox-bean-validators-3.0.0.jar jakarta.annota
+ tion-api-1.3.5.jar jboss-logging-3.4.2.Final.jar junit-platform-engine-
+ 1.7.2.jar spring-beans-5.3.9.jar tomcat-embed-el-9.0.52.jar log4j-to-sl
+ f4j-2.14.1.jar jakarta.persistence-api-2.2.3.jar springfox-spring-webfl
+ ux-3.0.0.jar slf4j-api-1.7.32.jar spring-boot-starter-data-jpa-2.5.4.ja
+ r asm-9.1.jar jul-to-slf4j-1.7.32.jar jackson-datatype-jdk8-2.12.4.jar 
+ spring-boot-starter-logging-2.5.4.jar jackson-module-parameter-names-2.
+ 12.4.jar spring-boot-starter-web-2.5.4.jar
+
