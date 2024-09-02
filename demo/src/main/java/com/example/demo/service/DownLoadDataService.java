@@ -39,6 +39,7 @@ public class DownLoadDataService {
 
     private static final Font BOLD_FONT = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
 
+
     @Autowired
     DSLContext dslContext;
 
@@ -63,6 +64,7 @@ public class DownLoadDataService {
                                 record.get(Tables.VOTERS_AUTHORIZED.NAME),
                                 record.get(Tables.VOTERS_AUTHORIZED.DESIGNATION),
                                 record.get(Tables.VOTERS_AUTHORIZED.ORGANIZATION),
+                                record.get(Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING),
                                 record.get(Tables.VOTERS_AUTHORIZED.ZONE),
                                 record.get(Tables.VOTERS_AUTHORIZED.STATE),
                                 record.get( Tables.VOTERS_AUTHORIZED.MOBILENUMBER),
@@ -129,6 +131,7 @@ public class DownLoadDataService {
                                 record.get(Tables.LOGS.NAME),
                                 record.get(Tables.LOGS.DESIGNATION),
                                 record.get(Tables.LOGS.ORGANIZATION),
+                                record.get(Tables.LOGS.PLACEOFPOSTING),
                                 record.get(Tables.LOGS.ZONE),
                                 record.get(Tables.LOGS.STATE),
                                 record.get( Tables.LOGS.MOBILENUMBER),
@@ -156,25 +159,30 @@ public class DownLoadDataService {
 
             PdfPTable table = new PdfPTable(11);
             table.setWidthPercentage(100);
-            table.setWidths(new float[]{2f, 4f, 3f,2f,2f,2f,5f,4f,2f,2f,2f});
+            table.setWidths(new float[]{2f, 4f, 3f,2f,2f,3f,4f,5f,3f,2f,2f});
             // Define column headers
             var list = List.of("Serial Number","Name","Designation","Organization",
                     "Zone","State","Mobile Number","Email","Request Type","Action By","Reject By");
-            addTableHeader(table,list);
+            Font headerFont = new Font(Font.FontFamily.HELVETICA, 8, Font.BOLD);
+            for(String name : list){
+                PdfPCell header = new PdfPCell(new Paragraph(name, headerFont));
+                table.addCell(header);
+            }
             // Add rows to the table
+            Font contentFont = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL);
             for (Logs log : logs) {
                 var serialNumber = log.serialNumber() != null ? log.serialNumber().toString(): "";
-                table.addCell(serialNumber);
-                table.addCell(log.name());
-                table.addCell(log.designation());
-                table.addCell(log.organization());
-                table.addCell(log.zone());
-                table.addCell(log.state());
-                table.addCell(log.mobileNumber());
-                table.addCell(log.email());
-                table.addCell(String.valueOf(log.requestType()));
-                table.addCell(log.actionBy());
-                table.addCell(log.rejectBy());
+                table.addCell(new PdfPCell(new Paragraph(serialNumber,contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.name(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.designation(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.organization(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.zone(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.state(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.mobileNumber(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.email(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(String.valueOf(log.requestType()),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.actionBy(),contentFont)));
+                table.addCell(new PdfPCell(new Paragraph(log.rejectBy(),contentFont)));
             }
             // Add the table to the document
             document.add(table);
@@ -401,6 +409,12 @@ public class DownLoadDataService {
             userModel.setComment(userModel.getComment() + "Organisation column not found");
             status = false;
         }
+        if (headerMap.containsKey("Place of Posting")) {
+            var cell = row.getCell(headerMap.get("Place of Posting"));
+            if(cell != null){
+                userModel.setPlaceOfPosting(cell.getStringCellValue());
+            }
+        }
         if (headerMap.containsKey("email id")) {
             var cell = row.getCell(headerMap.get("email id"));
             if(cell != null){
@@ -483,6 +497,7 @@ public class DownLoadDataService {
                     record.set(Tables.VOTERS_AUTHORIZED.NAME, model.getName());
                     record.set(Tables.VOTERS_AUTHORIZED.DESIGNATION, model.getDesignation());
                     record.set(Tables.VOTERS_AUTHORIZED.ORGANIZATION, model.getOrganization());
+                    record.set(Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING, model.getPlaceOfPosting());
                     record.set(Tables.VOTERS_AUTHORIZED.ZONE, model.getZone());
                     record.set(Tables.VOTERS_AUTHORIZED.STATE, model.getState());
                     record.set(Tables.VOTERS_AUTHORIZED.MOBILENUMBER, model.getMobile());
@@ -593,6 +608,7 @@ public class DownLoadDataService {
                     record.set(Tables.CANDIDATE_AND_VOTING.NAME, model.getName());
                     record.set(Tables.CANDIDATE_AND_VOTING.DESIGNATION, model.getDesignation());
                     record.set(Tables.CANDIDATE_AND_VOTING.ORGANIZATION, model.getOrganization());
+                    record.set(Tables.CANDIDATE_AND_VOTING.ORGANIZATION, model.getPlaceOfPosting());
                     record.set(Tables.CANDIDATE_AND_VOTING.ZONE, model.getZone());
                     record.set(Tables.CANDIDATE_AND_VOTING.STATE, model.getState());
                     record.set(Tables.CANDIDATE_AND_VOTING.MOBILENUMBER, model.getMobile());

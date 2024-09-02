@@ -66,6 +66,7 @@ public class VoterService {
                 .columns(Tables.CHIEF_LEVEL_VOTERS.NAME,
                         Tables.CHIEF_LEVEL_VOTERS.DESIGNATION,
                         Tables.CHIEF_LEVEL_VOTERS.ORGANIZATION,
+                        Tables.CHIEF_LEVEL_VOTERS.PLACEOFPOSTING,
                         Tables.CHIEF_LEVEL_VOTERS.ZONE,
                         Tables.CHIEF_LEVEL_VOTERS.STATE,
                         Tables.CHIEF_LEVEL_VOTERS.MOBILENUMBER,
@@ -73,6 +74,7 @@ public class VoterService {
                         Tables.CHIEF_LEVEL_VOTERS.REQUESTTYPE)
                 .values(voterRequest.name()
                         , voterRequest.designation(),voterRequest.organization(),
+                        voterRequest.placeOfPosting(),
                         voterRequest.zone(),voterRequest.state(),
                         voterRequest.mobileNumber(),voterRequest.email(), ChiefLevelVotersRequesttype.SIGNUP_REQUEST).execute();
     }
@@ -88,12 +90,14 @@ public class VoterService {
                         Tables.CHIEF_LEVEL_VOTERS.NAME,
                         Tables.CHIEF_LEVEL_VOTERS.DESIGNATION,
                         Tables.CHIEF_LEVEL_VOTERS.ORGANIZATION,
+                        Tables.CHIEF_LEVEL_VOTERS.PLACEOFPOSTING,
                         Tables.CHIEF_LEVEL_VOTERS.ZONE,
                         Tables.CHIEF_LEVEL_VOTERS.STATE,
                         Tables.CHIEF_LEVEL_VOTERS.MOBILENUMBER,
                         Tables.CHIEF_LEVEL_VOTERS.EMAIL,Tables.CHIEF_LEVEL_VOTERS.REQUESTTYPE)
                 .values(voterRequest.serialNumber(),voterRequest.name()
                         , voterRequest.designation(),voterRequest.organization(),
+                        voterRequest.placeOfPosting(),
                         voterRequest.zone(),voterRequest.state(),
                         voterRequest.mobileNumber(),voterRequest.email(), ChiefLevelVotersRequesttype.UPDATE_REQUEST).execute();
     }
@@ -107,6 +111,7 @@ public class VoterService {
                                 record.get(Tables.VOTERS_AUTHORIZED.NAME),
                                 record.get(Tables.VOTERS_AUTHORIZED.DESIGNATION),
                                 record.get(Tables.VOTERS_AUTHORIZED.ORGANIZATION),
+                                record.get(Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING),
                                 record.get(Tables.VOTERS_AUTHORIZED.ZONE),
                                 record.get(Tables.VOTERS_AUTHORIZED.STATE),
                                 record.get( Tables.VOTERS_AUTHORIZED.MOBILENUMBER),
@@ -122,6 +127,7 @@ public class VoterService {
                                 record.get(Tables.VOTERS_UNAUTHORIZED.NAME),
                                 record.get(Tables.VOTERS_UNAUTHORIZED.DESIGNATION),
                                 record.get(Tables.VOTERS_UNAUTHORIZED.ORGANIZATION),
+                                record.get(Tables.VOTERS_UNAUTHORIZED.PLACEOFPOSTING),
                                 record.get(Tables.VOTERS_UNAUTHORIZED.ZONE),
                                 record.get(Tables.VOTERS_UNAUTHORIZED.STATE),
                                 record.get( Tables.VOTERS_UNAUTHORIZED.MOBILENUMBER),
@@ -136,6 +142,7 @@ public class VoterService {
                                 record.get(Tables.LOGS.NAME),
                                 record.get(Tables.LOGS.DESIGNATION),
                                 record.get(Tables.LOGS.ORGANIZATION),
+                                record.get(Tables.LOGS.PLACEOFPOSTING),
                                 record.get(Tables.LOGS.ZONE),
                                 record.get(Tables.LOGS.STATE),
                                 record.get( Tables.LOGS.MOBILENUMBER),
@@ -157,6 +164,7 @@ public class VoterService {
                                 record.get(Tables.CHIEF_LEVEL_VOTERS.NAME),
                                 record.get(Tables.CHIEF_LEVEL_VOTERS.DESIGNATION),
                                 record.get(Tables.CHIEF_LEVEL_VOTERS.ORGANIZATION),
+                                record.get(Tables.CHIEF_LEVEL_VOTERS.PLACEOFPOSTING),
                                 record.get(Tables.CHIEF_LEVEL_VOTERS.ZONE),
                                 record.get(Tables.CHIEF_LEVEL_VOTERS.STATE),
                                 record.get( Tables.CHIEF_LEVEL_VOTERS.MOBILENUMBER),
@@ -174,6 +182,7 @@ public class VoterService {
                                     record.get(Tables.ADMIN_LEVEL_VOTERS.NAME),
                                     record.get(Tables.ADMIN_LEVEL_VOTERS.DESIGNATION),
                                     record.get(Tables.ADMIN_LEVEL_VOTERS.ORGANIZATION),
+                                    record.get(Tables.ADMIN_LEVEL_VOTERS.PLACEOFPOSTING),
                                     record.get(Tables.ADMIN_LEVEL_VOTERS.ZONE),
                                     record.get(Tables.ADMIN_LEVEL_VOTERS.STATE),
                                     record.get( Tables.ADMIN_LEVEL_VOTERS.MOBILENUMBER),

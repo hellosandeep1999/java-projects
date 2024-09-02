@@ -1,0 +1,26 @@
+create table `POSITIONS` (
+    id bigint primary key AUTO_INCREMENT,
+    name varchar(64) not null
+);
+
+INSERT INTO POSITIONS (name) VALUES
+('PRESIDENT'),
+('GENERAL SECRETARY'),
+('ADDL GEN. SECRETARY'),
+('ADDL GEN. SECRETARY (ORG)'),
+('TREASURER'),
+('ASST TREASURER'),
+('SECRETARY(AE)'),
+('SECRETARY(SEA/EA)'),
+('SECRETARY(SrTech/Tech)'),
+('SECRETARY(Helper)'),
+('VICE PRESIDENT-TV'),
+('VICE PRESIDENT-AIR'),
+('ASSISTANT GEN. SEC (TV)'),
+('ASSISTANT GEN. SEC (AIR)'),
+('VICE PRESIDENT'),
+('ASSISTANT GEN. SEC (ORG)'),
+('JOINT SEC (SEA/EA)'),
+('JOINT SEC (SrTech/Tech)'),
+('JOINT SEC (Helper)'),
+('STATE SECRETARY');

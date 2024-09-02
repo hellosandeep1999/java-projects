@@ -16,6 +16,7 @@ public class UserModel {
     private String designation;
     private String zone;
     private String organization;
+    private String placeOfPosting;
     private String state;
     private String email;
     private String voterType;
@@ -25,13 +26,14 @@ public class UserModel {
     private String mobile;
     private String comment;
 
-    public UserModel(Long serialNumber, String userName, String name, String designation, String zone, String organization, String state, String email, String voterType, String password, String positionName, SelectionType selectionType, String mobile, String comment) {
+    public UserModel(Long serialNumber, String userName, String name, String designation, String zone, String organization, String placeOfPosting,String state, String email, String voterType, String password, String positionName, SelectionType selectionType, String mobile, String comment) {
         this.serialNumber = serialNumber;
         this.userName = userName;
         this.name = name;
         this.designation = designation;
         this.zone = zone;
         this.organization = organization;
+        this.placeOfPosting = placeOfPosting;
         this.state = state;
         this.email = email;
         this.voterType = voterType;
@@ -91,6 +93,14 @@ public class UserModel {
 
     public void setOrganization(String organization) {
         this.organization = organization;
+    }
+
+    public String getPlaceOfPosting() {
+        return placeOfPosting;
+    }
+
+    public void setPlaceOfPosting(String placeOfPosting) {
+        this.placeOfPosting = placeOfPosting;
     }
 
     public String getState() {

@@ -16,6 +16,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 @Service
@@ -110,6 +111,7 @@ public class ActionOnVoterService {
                         Tables.ADMIN_LEVEL_VOTERS.NAME,
                         Tables.ADMIN_LEVEL_VOTERS.DESIGNATION,
                         Tables.ADMIN_LEVEL_VOTERS.ORGANIZATION,
+                        Tables.ADMIN_LEVEL_VOTERS.PLACEOFPOSTING,
                         Tables.ADMIN_LEVEL_VOTERS.ZONE,
                         Tables.ADMIN_LEVEL_VOTERS.STATE,
                         Tables.ADMIN_LEVEL_VOTERS.MOBILENUMBER,
@@ -119,6 +121,7 @@ public class ActionOnVoterService {
                         actionOnVoterRequest.name(),
                         actionOnVoterRequest.designation(),
                         actionOnVoterRequest.organization(),
+                        actionOnVoterRequest.placeOfPosting(),
                         actionOnVoterRequest.zone(),
                         actionOnVoterRequest.state(),
                         actionOnVoterRequest.mobileNumber(),
@@ -134,6 +137,7 @@ public class ActionOnVoterService {
                         Tables.VOTERS_UNAUTHORIZED.NAME,
                         Tables.VOTERS_UNAUTHORIZED.DESIGNATION,
                         Tables.VOTERS_UNAUTHORIZED.ORGANIZATION,
+                        Tables.VOTERS_UNAUTHORIZED.PLACEOFPOSTING,
                         Tables.VOTERS_UNAUTHORIZED.ZONE,
                         Tables.VOTERS_UNAUTHORIZED.STATE,
                         Tables.VOTERS_UNAUTHORIZED.MOBILENUMBER,
@@ -143,6 +147,7 @@ public class ActionOnVoterService {
                         actionOnVoterRequest.name(),
                         actionOnVoterRequest.designation(),
                         actionOnVoterRequest.organization(),
+                        actionOnVoterRequest.placeOfPosting(),
                         actionOnVoterRequest.zone(),
                         actionOnVoterRequest.state(),
                         actionOnVoterRequest.mobileNumber(),
@@ -157,6 +162,7 @@ public class ActionOnVoterService {
                         Tables.VOTERS_AUTHORIZED.NAME,
                         Tables.VOTERS_AUTHORIZED.DESIGNATION,
                         Tables.VOTERS_AUTHORIZED.ORGANIZATION,
+                        Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING,
                         Tables.VOTERS_AUTHORIZED.ZONE,
                         Tables.VOTERS_AUTHORIZED.STATE,
                         Tables.VOTERS_AUTHORIZED.MOBILENUMBER,
@@ -167,6 +173,7 @@ public class ActionOnVoterService {
                         actionOnVoterRequest.name(),
                         actionOnVoterRequest.designation(),
                         actionOnVoterRequest.organization(),
+                        actionOnVoterRequest.placeOfPosting(),
                         actionOnVoterRequest.zone(),
                         actionOnVoterRequest.state(),
                         actionOnVoterRequest.mobileNumber(),
@@ -182,6 +189,7 @@ public class ActionOnVoterService {
                 .set(Tables.VOTERS_AUTHORIZED.NAME, actionOnVoterRequest.name())
                 .set(Tables.VOTERS_AUTHORIZED.DESIGNATION,actionOnVoterRequest.designation())
                 .set(Tables.VOTERS_AUTHORIZED.ORGANIZATION,actionOnVoterRequest.organization())
+                .set(Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING,actionOnVoterRequest.placeOfPosting())
                 .set(Tables.VOTERS_AUTHORIZED.ZONE,actionOnVoterRequest.zone())
                 .set( Tables.VOTERS_AUTHORIZED.STATE,actionOnVoterRequest.state())
                 .set( Tables.VOTERS_AUTHORIZED.MOBILENUMBER,actionOnVoterRequest.mobileNumber())
@@ -200,6 +208,7 @@ public class ActionOnVoterService {
                         Tables.LOGS.NAME,
                         Tables.LOGS.DESIGNATION,
                         Tables.LOGS.ORGANIZATION,
+                        Tables.LOGS.PLACEOFPOSTING,
                         Tables.LOGS.ZONE,
                         Tables.LOGS.STATE,
                         Tables.LOGS.MOBILENUMBER,
@@ -212,12 +221,13 @@ public class ActionOnVoterService {
                         actionOnVoterRequest.name(),
                         actionOnVoterRequest.designation(),
                         actionOnVoterRequest.organization(),
+                        actionOnVoterRequest.placeOfPosting(),
                         actionOnVoterRequest.zone(),
                         actionOnVoterRequest.state(),
                         actionOnVoterRequest.mobileNumber(),
                         actionOnVoterRequest.email(),
                         LogsRequesttype.valueOf(actionOnVoterRequest.requestType().toString()),
-                        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()),
+                        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now(ZoneId.of("Asia/Kolkata"))),
                         actionOnVoterRequest.actionBy(),
                         userType
                 ).execute();
@@ -230,6 +240,7 @@ public class ActionOnVoterService {
                         Tables.LOGS.NAME,
                         Tables.LOGS.DESIGNATION,
                         Tables.LOGS.ORGANIZATION,
+                        Tables.LOGS.PLACEOFPOSTING,
                         Tables.LOGS.ZONE,
                         Tables.LOGS.STATE,
                         Tables.LOGS.MOBILENUMBER,
@@ -242,12 +253,13 @@ public class ActionOnVoterService {
                         actionOnVoterRequest.name(),
                         actionOnVoterRequest.designation(),
                         actionOnVoterRequest.organization(),
+                        actionOnVoterRequest.placeOfPosting(),
                         actionOnVoterRequest.zone(),
                         actionOnVoterRequest.state(),
                         actionOnVoterRequest.mobileNumber(),
                         actionOnVoterRequest.email(),
                         LogsRequesttype.valueOf(actionOnVoterRequest.requestType().toString()),
-                        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()),
+                        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now(ZoneId.of("Asia/Kolkata"))),
                         actionOnVoterRequest.actionBy(),
                         userType
                 ).execute();

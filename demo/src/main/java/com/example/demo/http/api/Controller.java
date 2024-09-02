@@ -144,13 +144,13 @@ public class Controller {
             throw new RuntimeException(USER_NOT_AUTHORIZED);
         }
         if(voterService.isAlreadyVoted(loginKey)){
-            return ResponseEntity.ok(new VotingDataDetail(null,"You have been already voted, Thanks for Voting!",true));
+            return ResponseEntity.ok(new VotingDataDetail(null,"You have been already voted, Thanks for Voting!",true,true,false));
         }
         if(!voterService.isZoneEligible(loginKey)){
-            return ResponseEntity.ok(new VotingDataDetail(null,"Your zone not eligible for voting at this time.",true));
+            return ResponseEntity.ok(new VotingDataDetail(null,"Your zone not eligible for voting at this time.",true,false,true));
         }
         var votingData = votingCountService.getVotingDataForVoting(loginKey);
-        return ResponseEntity.ok(new VotingDataDetail(votingData,null,false));
+        return ResponseEntity.ok(new VotingDataDetail(votingData,null,false,false,false));
     }
 
     //submit vote
@@ -212,7 +212,12 @@ public class Controller {
 
 
      // Work
-        // Github push
+         // logs pdf format  --- Done
+         // sorting by president first and zone wise
+         // ist time zone use --- Done
+         // place of posting
+        // zone wise flag
+
         // document
         // press
 

@@ -8,9 +8,9 @@ spring:
 
 
   datasource:
-    url: 
-    username: admin
-    password: 
+    url: jdbc:mysql://localhost:3306/test_db
+    username: voting
+    password: voting
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
     profile: local

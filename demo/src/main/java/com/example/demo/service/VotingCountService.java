@@ -5,6 +5,7 @@ import com.example.demo.domain.model.enums.SelectionType;
 import com.example.demo.generated.jooq.Tables;
 import com.example.demo.generated.jooq.enums.CandidateAndVotingSelectiontype;
 import com.example.demo.generated.jooq.enums.VotersAuthorizedIsvoted;
+import com.example.demo.generated.jooq.tables.records.PositionsRecord;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jooq.DSLContext;
@@ -14,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.tags.form.SelectTag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -79,17 +77,32 @@ public class VotingCountService {
                                 record.get(Tables.VOTERS_AUTHORIZED.NAME),
                                 record.get(Tables.VOTERS_AUTHORIZED.DESIGNATION),
                                 record.get(Tables.VOTERS_AUTHORIZED.ORGANIZATION),
+                                record.get(Tables.VOTERS_AUTHORIZED.PLACEOFPOSTING),
                                 record.get(Tables.VOTERS_AUTHORIZED.ZONE),
                                 record.get(Tables.VOTERS_AUTHORIZED.STATE),
                                 record.get( Tables.VOTERS_AUTHORIZED.MOBILENUMBER),
                                 record.get( Tables.VOTERS_AUTHORIZED.EMAIL),
                                 null
                         ));
+        var positionVsPositionId = dslContext.selectFrom(Tables.POSITIONS)
+                .fetch().stream().collect(Collectors.toMap(PositionsRecord::component2, PositionsRecord::component1));
 
-       var eligibleCandidates = getEligibleCandidates(voterData.get(0));
-        Map<String, List<VoteByPosition>> positionByCandidates = eligibleCandidates.stream().collect(Collectors.groupingBy(VoteByPosition::positionName));
-        return positionByCandidates.entrySet().stream().map(entry->{
-                    var candidates = entry.getValue().stream().map(e-> new ChooseVote(e.id(),e.CandidateName())).toList();
+        var eligibleCandidates = getEligibleCandidates(voterData.get(0));
+        Map<String, List<VoteByPosition>> positionByCandidates = eligibleCandidates.stream()
+                .collect(Collectors.groupingBy(VoteByPosition::positionName));
+
+        var sortedMap = positionByCandidates.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.comparingLong(positionVsPositionId::get)))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new // Preserve insertion order
+                ));
+        return sortedMap.entrySet().stream().map(entry->{
+                    var candidates = entry.getValue().stream().map(e->
+                            new ChooseVote(e.id(),e.CandidateName())).toList();
                     return new PositionCandidate(entry.getKey(), candidates);
                 }
         ).toList();
