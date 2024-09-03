@@ -57,11 +57,22 @@ public class VotingCountService {
                 new VotingCountDao(record.get(Tables.CANDIDATE_AND_VOTING.NAME),
                         record.get(Tables.CANDIDATE_AND_VOTING.POSITION),
                         record.get(Tables.CANDIDATE_AND_VOTING.VOTECOUNT))).toList();
-
-        Map<String, List<VotingCountDao>> map = data.stream().collect(Collectors.groupingBy(VotingCountDao::positionName));
-
-        var candidateVoteCount = map.entrySet().stream().map(entry->{
-                    var candidateCount = entry.getValue().stream().map(e-> new CandidateVoteCount(e.candidateName(),e.count())).toList();
+        var positionVsPositionId = dslContext.selectFrom(Tables.POSITIONS)
+                .fetch().stream().collect(Collectors.toMap(PositionsRecord::component2, PositionsRecord::component1));
+        Map<String, List<VotingCountDao>> positionByCandidates = data.stream()
+                .collect(Collectors.groupingBy(VotingCountDao::positionName));
+        var sortedMap = positionByCandidates.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.comparingLong(positionVsPositionId::get)))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new // Preserve insertion order
+                ));
+        var candidateVoteCount = sortedMap.entrySet().stream().map(entry->{
+                    var candidateCount = entry.getValue().stream()
+                            .map(e-> new CandidateVoteCount(e.candidateName(),e.count())).toList();
                     return new PositionByCount(entry.getKey(), candidateCount);
                 }
                 ).toList();
