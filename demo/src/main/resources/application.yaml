@@ -1,4 +1,4 @@
-
+# http://localhost:8080/swagger-ui/#/
 server:
   port: 8080
 
@@ -8,9 +8,12 @@ spring:
 
 
   datasource:
-    url: jdbc:mysql://localhost:3306/test_db
-    username: voting
-    password: voting
+    url: jdbc:mysql://electiondb.cbyqqoo2cwct.eu-north-1.rds.amazonaws.com:3307/electiondb
+    username: admin
+    password: Election213
+#    url: jdbc:mysql://localhost:3306/test_db
+#    username: voting
+#    password: voting
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
     profile: local
@@ -38,8 +41,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: atreeelections@gmail.com
-    password: tvlr aguf pvcx uefr
+    username:
+    password:
     properties:
       mail:
         smtp:
